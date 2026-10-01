@@ -4,32 +4,31 @@ let interval;
 const questionelement= document.getElementById("question")
 const choices= document.getElementById("choices")
 const timerElement= document.getElementById("timer")
-
 document.getElementById('next-btn').style.display = 'none';
+
 const quizData= [
     {
-    question: "What is the capital of France?",
-    choices: ["London", "Paris", "Berlin"],
-    answer:"Paris"
+      question: "What is the capital of France?",
+      choices: ["London", "Paris", "Berlin"],
+      answer:"Paris"
     },
       {
-question: "Who wrote the play 'Romeo and Juliet'?",
-choices: ["William Shakespeare", "Mark Twain", "Charles Dickens"],
-answer: "William Shakespeare"
+        question: "Who wrote the play 'Romeo and Juliet'?",
+        choices: ["William Shakespeare", "Mark Twain", "Charles Dickens"],
+        answer: "William Shakespeare"
     },
       {
-   question: "Which animal is known as the King of the Jungle?",
-choices: ["Tiger", "Lion", "Elephant"],
-answer: "Lion"
+        question: "Which animal is known as the King of the Jungle?",
+        choices: ["Tiger", "Lion", "Elephant"],
+        answer: "Lion"
     },
     {
-question: "What is the capital city of Japan?",
-choices: ["Tokyo", "Kyoto", "Osaka"],
-answer: "Tokyo"
+        question: "What is the capital city of Japan?",
+        choices: ["Tokyo", "Kyoto", "Osaka"],
+        answer: "Tokyo"
     }
 ];
-
-function shuffleArray(){
+function sswitcharray(){
 
     for(let i = quizData.length - 1; i >= 0; i--){
         let partner = i - 1;  
@@ -39,10 +38,9 @@ function shuffleArray(){
         quizData[partner]=temp
     }
 }
-shuffleArray()
-function loadQuestion(){
+sswitcharray()
+function introducequestions(){
     clearInterval(interval);
-    
     let timer=10;
    interval  = setInterval(() => {
         timer--
@@ -106,7 +104,7 @@ document.getElementById('quiz-container').style.display = 'none';
 document.getElementById('result').style.display = 'block';
 document.getElementById('score').textContent = `${count} / ${quizData.length}`;
 }else{
-  loadQuestion();
+  introducequestions();
 }   
 });
 function restartQuiz() {
@@ -114,7 +112,7 @@ function restartQuiz() {
   count = 0;          
   document.getElementById('result').style.display = 'none';
   document.getElementById('quiz-container').style.display = 'block';
-  loadQuestion();     
+  introducequestions();     
 }
 
-loadQuestion();
+introducequestions();
